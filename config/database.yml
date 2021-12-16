@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: marcelino
+  password: gui281209
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: ecommerce_api_onebitcode_development
+
+test:
+  <<: *default
+  database: ecommerce_api_onebitcode_test
+
+production:
+  <<: *default
+  database: ecommerce_api_onebitcode_production
+  username: ecommerce_api_onebitcode
+  password: <%= ENV['ECOMMERCE_API_ONEBITCODE_DATABASE_PASSWORD'] %>
