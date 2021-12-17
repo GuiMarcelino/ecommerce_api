@@ -34,3 +34,563 @@ Migrating to DeviseTokenAuthCreateUsers (20211216001826)
   [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "test@test.com.br"], ["provider", "email"], ["LIMIT", 1]]
   [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "profile", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "test@test.com.br"], ["encrypted_password", "$2a$12$279mufnMk4U2tF1CzJKHZeyGXaJPjV3XqNIa1y.BJjBW24kFFIJ3O"], ["name", "test"], ["profile", 0], ["email", "test@test.com.br"], ["created_at", "2021-12-16 00:24:36.413288"], ["updated_at", "2021-12-16 00:24:36.413288"]]
   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:41:34 -0300
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `devise_controller?' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:43:48 -0300
+  
+NoMethodError (undefined method `devise_controller?' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:46:09 -0300
+  
+NoMethodError (undefined method `devise_controller?' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:46:12 -0300
+  
+NoMethodError (undefined method `devise_controller?' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:46:32 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `devise_controller?' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:48:44 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+Completed 405 Method Not Allowed in 41ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 15229)
+
+
+Started POST "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:49:36 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 229)
+
+
+Started POST "//auth/v1/user" for ::1 at 2021-12-16 20:53:01 -0300
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"name"=>"Test user 2", "email"=>"teste2@.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"Test user 2", "email"=>"teste2@.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 312ms (Views: 0.4ms | ActiveRecord: 18.0ms | Allocations: 16447)
+
+
+Started POST "//auth/v1/user" for ::1 at 2021-12-16 20:55:28 -0300
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"name"=>"Test user 2", "email"=>"teste2@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"Test user 2", "email"=>"teste2@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["uid", "teste2@test.com"], ["encrypted_password", "$2a$12$OP4UMdAnSATgQkg2T.u7g.FPnXIFKZKFgGhMs6ymtNlI2vOqosA22"], ["name", "Test user 2"], ["email", "teste2@test.com"], ["created_at", "2021-12-16 23:55:28.330653"], ["updated_at", "2021-12-16 23:55:28.330653"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"expiry\\\":1640303728}}\""], ["updated_at", "2021-12-16 23:55:28.396965"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"}}\""], ["updated_at", "2021-12-16 23:55:28.469205"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 394ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 17776)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:57:18 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+Completed 405 Method Not Allowed in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 163)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:58:25 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+Completed 405 Method Not Allowed in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:58:28 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+Completed 405 Method Not Allowed in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:58:29 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+Completed 405 Method Not Allowed in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:58:29 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+Completed 405 Method Not Allowed in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 170)
+
+
+Started GET "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:59:30 -0300
+Processing by DeviseTokenAuth::SessionsController#new as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+Completed 405 Method Not Allowed in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started POST "//auth/v1/user/sign_in" for ::1 at 2021-12-16 20:59:42 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$zr87QG2utdPxT4gE8xAP8eDo4LG9H.Iz/77E75Zo1Hf6RxwnCeg22\\\",\\\"expiry\\\":1640303983}}\""], ["updated_at", "2021-12-16 23:59:43.251132"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$gRU9NQqQTLpb8at6C4uO6.magwZyMV5Hm2MfPKmCDu8.jJ3zRX52i\\\",\\\"expiry\\\":1640303983,\\\"last_token\\\":\\\"$2a$10$zr87QG2utdPxT4gE8xAP8eDo4LG9H.Iz/77E75Zo1Hf6RxwnCeg22\\\",\\\"updated_at\\\":\\\"2021-12-16T23:59:43Z\\\"}}\""], ["updated_at", "2021-12-16 23:59:43.326122"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 383ms (Views: 0.1ms | ActiveRecord: 3.8ms | Allocations: 13018)
+
+
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:06:48 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:4:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:3:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:3:in `<module:V1>'
+app/controllers/admin/home_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/V1/home" for ::1 at 2021-12-16 21:06:54 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/V1/home"):
+  
+actionpack (6.0.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.4.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:07:04 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:4:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:3:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:3:in `<module:V1>'
+app/controllers/admin/home_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:08:00 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:4:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:3:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:08:58 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:4:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:3:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:3:in `<module:V1>'
+app/controllers/admin/home_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:13:04 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:16:54 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:17:30 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:19:26 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:19:27 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:19:28 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:19:28 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:19:29 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:25:28 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started POST "//admin/v1/home" for ::1 at 2021-12-16 21:25:56 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/v1/home"):
+  
+actionpack (6.0.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.4.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:26:00 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:26:41 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:26:47 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:29:30 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:35:07 -0300
+  
+SyntaxError (/home/guilherme/ecommerce_api/app/controllers/application_controller.rb:10: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected `end', expecting end-of-input
+app/controllers/application_controller.rb:10: syntax error, unexpected `end', expecting end-of-input
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:35:46 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:36:31 -0300
+  
+NameError (uninitialized constant Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:3:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:37:24 -0300
+  
+NameError (uninitialized constant Admin::V1::ApiController::Authenticable):
+  
+app/controllers/admin/v1/api_controller.rb:4:in `<class:ApiController>'
+app/controllers/admin/v1/api_controller.rb:3:in `<module:V1>'
+app/controllers/admin/v1/api_controller.rb:2:in `<module:Admin>'
+app/controllers/admin/v1/api_controller.rb:1:in `<main>'
+app/controllers/admin/home_controller.rb:2:in `<module:V1>'
+app/controllers/admin/home_controller.rb:1:in `<main>'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:42:45 -0300
+  
+LoadError (Unable to autoload constant Admin::HomeController, expected /home/guilherme/ecommerce_api/app/controllers/admin/home_controller.rb to define it):
+  
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:555:in `load_missing_constant'
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:214:in `const_missing'
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:586:in `load_missing_constant'
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:214:in `const_missing'
+activesupport (6.0.4.4) lib/active_support/inflector/methods.rb:284:in `const_get'
+activesupport (6.0.4.4) lib/active_support/inflector/methods.rb:284:in `block in constantize'
+activesupport (6.0.4.4) lib/active_support/inflector/methods.rb:280:in `each'
+activesupport (6.0.4.4) lib/active_support/inflector/methods.rb:280:in `inject'
+activesupport (6.0.4.4) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:627:in `get'
+activesupport (6.0.4.4) lib/active_support/dependencies.rb:658:in `constantize'
+actionpack (6.0.4.4) lib/action_dispatch/http/request.rb:89:in `controller_class_for'
+actionpack (6.0.4.4) lib/action_dispatch/http/parameters.rb:100:in `binary_params_for?'
+actionpack (6.0.4.4) lib/action_dispatch/http/parameters.rb:91:in `set_binary_encoding'
+actionpack (6.0.4.4) lib/action_dispatch/http/parameters.rb:69:in `path_parameters='
+actionpack (6.0.4.4) lib/action_dispatch/journey/router.rb:47:in `block in serve'
+actionpack (6.0.4.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.4.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.4.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.4.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.4.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.4.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:45:33 -0300
+Processing by Admin::V1::HomeController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"expiry\\\":1640306733,\\\"last_token\\\":\\\"$2a$10$gRU9NQqQTLpb8at6C4uO6.magwZyMV5Hm2MfPKmCDu8.jJ3zRX52i\\\",\\\"updated_at\\\":\\\"2021-12-17T00:45:33Z\\\"}}\""], ["updated_at", "2021-12-17 00:45:33.444758"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 158ms (Views: 0.2ms | ActiveRecord: 8.1ms | Allocations: 19284)
+
+
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:48:41 -0300
+Processing by Admin::V1::HomeController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 73ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 1344)
+
+
+Started GET "//admin/v1/home" for ::1 at 2021-12-16 21:48:56 -0300
+Processing by Admin::V1::HomeController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$RUDKo34ICiu27uLfDq3UV.waksuHTzAntmkbvBQo4Tze1irG4b1aC\\\",\\\"expiry\\\":1640306936,\\\"last_token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"updated_at\\\":\\\"2021-12-17T00:48:56Z\\\"}}\""], ["updated_at", "2021-12-17 00:48:56.230541"], ["id", 2]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 149ms (Views: 0.1ms | ActiveRecord: 5.4ms | Allocations: 8308)
+
+
+Started DELETE "//auth/v1/user/sign_in" for ::1 at 2021-12-16 21:54:47 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/auth/v1/user/sign_in"):
+  
+actionpack (6.0.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.4.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started DELETE "//auth/v1/user/sign_out" for ::1 at 2021-12-16 21:55:00 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 69ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 2331)
+
+
+Started POST "//auth/v1/user/sign_in" for ::1 at 2021-12-16 21:55:19 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$RUDKo34ICiu27uLfDq3UV.waksuHTzAntmkbvBQo4Tze1irG4b1aC\\\",\\\"expiry\\\":1640306936,\\\"last_token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"updated_at\\\":\\\"2021-12-17T00:48:56Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"expiry\\\":1640307319}}\""], ["updated_at", "2021-12-17 00:55:19.381360"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$RUDKo34ICiu27uLfDq3UV.waksuHTzAntmkbvBQo4Tze1irG4b1aC\\\",\\\"expiry\\\":1640306936,\\\"last_token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"updated_at\\\":\\\"2021-12-17T00:48:56Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"}}\""], ["updated_at", "2021-12-17 00:55:19.453222"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 378ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 13151)
+
+
+Started POST "//auth/v1/user/sign_in" for ::1 at 2021-12-16 21:55:36 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$RUDKo34ICiu27uLfDq3UV.waksuHTzAntmkbvBQo4Tze1irG4b1aC\\\",\\\"expiry\\\":1640306936,\\\"last_token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"updated_at\\\":\\\"2021-12-17T00:48:56Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"expiry\\\":1640307336}}\""], ["updated_at", "2021-12-17 00:55:36.646636"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"kCNjU2DDIvs9hvV9EZg8QQ\\\":{\\\"token\\\":\\\"$2a$10$RUDKo34ICiu27uLfDq3UV.waksuHTzAntmkbvBQo4Tze1irG4b1aC\\\",\\\"expiry\\\":1640306936,\\\"last_token\\\":\\\"$2a$10$HNnoj7hkrpv9Z2dhum0avu22McU38fNb4nJ0KbgRAB50ICkvbzW4a\\\",\\\"updated_at\\\":\\\"2021-12-17T00:48:56Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"}}\""], ["updated_at", "2021-12-17 00:55:36.718712"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 399ms (Views: 0.1ms | ActiveRecord: 3.8ms | Allocations: 13131)
+
+
+Started DELETE "//auth/v1/user/sign_out" for ::1 at 2021-12-16 21:56:35 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 75ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 1401)
+
+
+Started DELETE "//auth/v1/user/sign_out" for ::1 at 2021-12-16 21:56:47 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 63ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+Started DELETE "//auth/v1/user/sign_out" for ::1 at 2021-12-16 21:58:08 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"}}\""], ["updated_at", "2021-12-17 00:58:08.147683"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 68ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 5316)
+
+
