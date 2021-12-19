@@ -594,3 +594,534 @@ Processing by DeviseTokenAuth::SessionsController#destroy as */*
 Completed 200 OK in 68ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 5316)
 
 
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:19:07 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it", "password"=>{"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it"}}
+[31mUnpermitted parameters: :redirect_url, :password[0m
+[31mUnpermitted parameters: :redirect_url, :password[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "57d71b64142a61dee22294f5f8f899709872e90deba5e7d811d2cc4e80cc605b"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["reset_password_token", "57d71b64142a61dee22294f5f8f899709872e90deba5e7d811d2cc4e80cc605b"], ["reset_password_sent_at", "2021-12-17 01:19:08.224956"], ["updated_at", "2021-12-17 01:19:08.227602"], ["id", 2]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (Duration: 77.9ms | Allocations: 10175)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 111.5ms
+Completed 500 Internal Server Error in 479ms (ActiveRecord: 12.7ms | Allocations: 69223)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `token' for #<#<Class:0x0000560cb239fc28>:0x0000560cb239c4b0>
+Did you mean?  @token):
+    2: 
+    3: <p>Someone has requested a link to change your password. You can do this through the link below.</p>
+    4: 
+    5: <p><%= link_to 'Change my password', "#{message['redirect-url']}?reset_password_token=#{token}" %></p>
+    6: 
+    7: <p>If you didn't request this, please ignore this email.</p>
+    8: <p>Your password won't change until you access the link above and create a new one.</p>
+  
+app/views/devise/mailer/reset_password_instructions.html.erb:5
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:19:47 -0300
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it", "password"=>{"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it"}}
+[31mUnpermitted parameters: :redirect_url, :password[0m
+[31mUnpermitted parameters: :redirect_url, :password[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "6aedfb989c6b9307ed458723aaaa52c71a2e823983f5088ac62dfa455612c76c"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["reset_password_token", "6aedfb989c6b9307ed458723aaaa52c71a2e823983f5088ac62dfa455612c76c"], ["reset_password_sent_at", "2021-12-17 01:19:47.701090"], ["updated_at", "2021-12-17 01:19:47.701851"], ["id", 2]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (Duration: 0.5ms | Allocations: 179)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 9.1ms
+Delivered mail 61bbe5b3b0559_978341b47563f@guilherme-Inspiron-13-5378.mail (5.7ms)
+Date: Thu, 16 Dec 2021 22:19:47 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: teste2@test.com
+Message-ID: <61bbe5b3b0559_978341b47563f@guilherme-Inspiron-13-5378.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+email: teste2@test.com
+provider: email
+redirect-url: localhost:3001/change_it
+client-config: default
+
+<p>Hello teste2@test.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="localhost:3001/change_it?reset_password_token=oCiNTXjqSHKXtCaGmpd7">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 4.6ms | Allocations: 11114)
+
+
+Started GET "/" for ::1 at 2021-12-16 22:20:26 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/guilherme/.rvm/gems/ruby-2.7.1/gems/railties-6.0.4.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/guilherme/.rvm/gems/ruby-2.7.1/gems/railties-6.0.4.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.0ms | Allocations: 184)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms | Allocations: 808)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-12-16 22:20:26 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.4) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+railties (6.0.4.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:30:04 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it", "password"=>{"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it"}}
+[31mUnpermitted parameters: :redirect_url, :password[0m
+[31mUnpermitted parameters: :redirect_url, :password[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["reset_password_sent_at", "2021-12-17 01:30:04.682988"], ["updated_at", "2021-12-17 01:30:04.684050"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (Duration: 0.7ms | Allocations: 339)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 48.7ms
+Delivered mail 61bbe81cc0126_9b632aa89222@guilherme-Inspiron-13-5378.mail (156.2ms)
+Date: Thu, 16 Dec 2021 22:30:04 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: teste2@test.com
+Message-ID: <61bbe81cc0126_9b632aa89222@guilherme-Inspiron-13-5378.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+email: teste2@test.com
+provider: email
+redirect-url: localhost:3001/change_it
+client-config: default
+
+<p>Hello teste2@test.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="localhost:3001/change_it?reset_password_token=Vkf1jEJKVgxHoA11f9qk">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 200 OK in 385ms (Views: 0.2ms | ActiveRecord: 5.5ms | Allocations: 60173)
+
+
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:30:38 -0300
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confimation"=>"[FILTERED]"}
+Filter chain halted as :validate_redirect_url_param rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:30:43 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confimation"=>"[FILTERED]"}
+[31mUnpermitted parameters: :password, :password_confimation[0m
+[31mUnpermitted parameters: :password, :password_confimation[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 7288)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:30:58 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confimation"=>"[FILTERED]"}
+[31mUnpermitted parameters: :password, :password_confimation[0m
+[31mUnpermitted parameters: :password, :password_confimation[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 7008)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:32:50 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confimation"=>"[FILTERED]"}
+[31mUnpermitted parameters: :password, :password_confimation[0m
+[31mUnpermitted parameters: :password, :password_confimation[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+[31mUnpermitted parameters: :reset_password_token, :password_confimation[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 71ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 7027)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:33:57 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 72ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 6957)
+
+
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:37:32 -0300
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it", "password"=>{"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it"}}
+[31mUnpermitted parameters: :redirect_url, :password[0m
+[31mUnpermitted parameters: :redirect_url, :password[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "351921a13ad63e8fa018b1c625b614a8d7fa58f1e22d962ff956db61a49e371a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["reset_password_token", "351921a13ad63e8fa018b1c625b614a8d7fa58f1e22d962ff956db61a49e371a"], ["reset_password_sent_at", "2021-12-17 01:37:32.603472"], ["updated_at", "2021-12-17 01:37:32.603821"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (Duration: 0.5ms | Allocations: 171)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 3.4ms
+Delivered mail 61bbe9dc95b38_9b6341c89394@guilherme-Inspiron-13-5378.mail (6.5ms)
+Date: Thu, 16 Dec 2021 22:37:32 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: teste2@test.com
+Message-ID: <61bbe9dc95b38_9b6341c89394@guilherme-Inspiron-13-5378.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+email: teste2@test.com
+provider: email
+redirect-url: localhost:3001/change_it
+client-config: default
+
+<p>Hello teste2@test.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="localhost:3001/change_it?reset_password_token=qDRrJpvPR5Ymb7X9JSxS">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 10716)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:38:06 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1522)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:38:21 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1504)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:39:19 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "b46e8086bd37de4e9f888a71bcd6d12364613df6fc2a213ac1f90aeb636cd7c0"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1504)
+
+
+Started DELETE "//auth/v1/user/sign_out" for ::1 at 2021-12-16 22:39:47 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "teste2@test.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1756)
+
+
+Started POST "//auth/v1/user/sign_in" for ::1 at 2021-12-16 22:39:54 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"teste2@test.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"},\\\"SAnn3YDEjduFgJiNrUK3bg\\\":{\\\"token\\\":\\\"$2a$10$jkYT/XmUMMOjkfk/f/yQceuim4KHqpQ968w4reylErXwt2iT3/HcO\\\",\\\"expiry\\\":1640309994}}\""], ["updated_at", "2021-12-17 01:39:54.847886"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"},\\\"SAnn3YDEjduFgJiNrUK3bg\\\":{\\\"token\\\":\\\"$2a$10$J5FS3RHE7BluRj7S9ml4VeJsmxPlAgMtTAUPY2oAFEoNSAvY8Wu9O\\\",\\\"expiry\\\":1640309994,\\\"last_token\\\":\\\"$2a$10$jkYT/XmUMMOjkfk/f/yQceuim4KHqpQ968w4reylErXwt2iT3/HcO\\\",\\\"updated_at\\\":\\\"2021-12-17T01:39:54Z\\\"}}\""], ["updated_at", "2021-12-17 01:39:54.917802"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 379ms (Views: 0.1ms | ActiveRecord: 3.1ms | Allocations: 13370)
+
+
+Started POST "//auth/v1/user/password" for ::1 at 2021-12-16 22:40:03 -0300
+Processing by DeviseTokenAuth::PasswordsController#create as */*
+  Parameters: {"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it", "password"=>{"email"=>"teste2@test.com", "redirect_url"=>"localhost:3001/change_it"}}
+[31mUnpermitted parameters: :redirect_url, :password[0m
+[31mUnpermitted parameters: :redirect_url, :password[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["uid", "teste2@test.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["reset_password_sent_at", "2021-12-17 01:40:03.758266"], ["updated_at", "2021-12-17 01:40:03.758620"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (Duration: 0.1ms | Allocations: 48)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 1.2ms
+Delivered mail 61bbea73bb2db_9b6342b894ae@guilherme-Inspiron-13-5378.mail (5.3ms)
+Date: Thu, 16 Dec 2021 22:40:03 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: teste2@test.com
+Message-ID: <61bbea73bb2db_9b6342b894ae@guilherme-Inspiron-13-5378.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+email: teste2@test.com
+provider: email
+redirect-url: localhost:3001/change_it
+client-config: default
+
+<p>Hello teste2@test.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="localhost:3001/change_it?reset_password_token=xWxKSzMq8-MXE5ksix8f">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 9736)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:40:50 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 6955)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:42:21 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 76ms (Views: 0.2ms | ActiveRecord: 6.5ms | Allocations: 6958)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:43:44 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 6955)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:43:46 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 78ms (Views: 0.1ms | ActiveRecord: 1.8ms | Allocations: 6955)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:15 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 69ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 6959)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:16 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 6957)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:17 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 71ms (Views: 0.1ms | ActiveRecord: 1.8ms | Allocations: 6955)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:17 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 75ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 6955)
+
+
+Started PUT "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:24 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 70ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 6955)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:44:29 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 71ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 6956)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-16 22:46:21 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]", "password"=>{"reset_password_token"=>"[FILTERED]", "Password"=>"[FILTERED]", "Password confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+[31mUnpermitted parameters: :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameters: :reset_password_token, :Password, :Password confirmation, :password[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 211ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 24498)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-19 19:16:24 -0300
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameters: :password, :password_confirmation[0m
+[31mUnpermitted parameters: :password, :password_confirmation[0m
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :reset_password_token[0m
+[31mUnpermitted parameter: :reset_password_token[0m
+[31mUnpermitted parameter: :reset_password_token[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "encrypted_password" = $2, "reset_password_token" = $3, "reset_password_sent_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"},\\\"SAnn3YDEjduFgJiNrUK3bg\\\":{\\\"token\\\":\\\"$2a$10$J5FS3RHE7BluRj7S9ml4VeJsmxPlAgMtTAUPY2oAFEoNSAvY8Wu9O\\\",\\\"expiry\\\":1640309994,\\\"last_token\\\":\\\"$2a$10$jkYT/XmUMMOjkfk/f/yQceuim4KHqpQ968w4reylErXwt2iT3/HcO\\\",\\\"updated_at\\\":\\\"2021-12-17T01:39:54Z\\\"},\\\"zkc-DKtpB3zFNj7I-0Ilmw\\\":{\\\"token\\\":\\\"$2a$10$Y59rlnuLy7ddExppN9cfuOPYDTtmW79FoOxXs4pio5Z5GNeIwCjbi\\\",\\\"expiry\\\":1640556985}}\""], ["encrypted_password", "$2a$12$Fqwz4EJ6UYAL3hcVHeYdJ.l751ibui.AOYIKaMELkjPTRLdndqMx2"], ["reset_password_token", nil], ["reset_password_sent_at", nil], ["updated_at", "2021-12-19 22:16:25.659650"], ["id", 2]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[37mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 FOR UPDATE[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"u8DoFcml_wpsS3INpx2v5A\\\":{\\\"token\\\":\\\"$2a$10$Z6n/TEBu1x7vXvYYcDgntuugZ2/ywVH12qIHzteljrVKodljGZGrG\\\",\\\"expiry\\\":1640303728,\\\"last_token\\\":\\\"$2a$10$6oTwpQR71UXkXs4yThDQyeQ1.GxfR2FKXdZvIG0DsGX.H5HCQl8Wi\\\",\\\"updated_at\\\":\\\"2021-12-16T23:55:28Z\\\"},\\\"6Xke5tUKbGJHluxZNzeLSA\\\":{\\\"token\\\":\\\"$2a$10$Jf..zNRn.RAkqV7DrYD7MulnUOxwLgF1/mH37p2SicOBh.Ze0jpVq\\\",\\\"expiry\\\":1640307319,\\\"last_token\\\":\\\"$2a$10$1twFHiNxuutaSUVu7eEO5uaA5iB3DcwSGqpN2L3ZnGVirxz1sVuQW\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:19Z\\\"},\\\"-_w_QgLnt-wdN62NFYzdJA\\\":{\\\"token\\\":\\\"$2a$10$Jtk3BnaESikKZYe1zj3RVur9sgPGXLRB2NdiuHwrEV3HlEz3Zm.G6\\\",\\\"expiry\\\":1640307336,\\\"last_token\\\":\\\"$2a$10$ILVtlsJxwSbXFK4G.i4dB.KAQtZLRKWySTGkpoK/CvN/pqiIn/AXC\\\",\\\"updated_at\\\":\\\"2021-12-17T00:55:36Z\\\"},\\\"SAnn3YDEjduFgJiNrUK3bg\\\":{\\\"token\\\":\\\"$2a$10$J5FS3RHE7BluRj7S9ml4VeJsmxPlAgMtTAUPY2oAFEoNSAvY8Wu9O\\\",\\\"expiry\\\":1640309994,\\\"last_token\\\":\\\"$2a$10$jkYT/XmUMMOjkfk/f/yQceuim4KHqpQ968w4reylErXwt2iT3/HcO\\\",\\\"updated_at\\\":\\\"2021-12-17T01:39:54Z\\\"},\\\"zkc-DKtpB3zFNj7I-0Ilmw\\\":{\\\"token\\\":\\\"$2a$10$/wW3EzQ0sV3S/8FHJnhwleb/MmIukyRS9T5Sponfrq9LRE2SS73e.\\\",\\\"expiry\\\":1640556985,\\\"last_token\\\":\\\"$2a$10$Y59rlnuLy7ddExppN9cfuOPYDTtmW79FoOxXs4pio5Z5GNeIwCjbi\\\",\\\"updated_at\\\":\\\"2021-12-19T22:16:25Z\\\"}}\""], ["updated_at", "2021-12-19 22:16:25.783966"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 624ms (Views: 0.6ms | ActiveRecord: 22.8ms | Allocations: 32256)
+
+
+Started PATCH "//auth/v1/user/password" for ::1 at 2021-12-19 19:16:48 -0300
+Processing by DeviseTokenAuth::PasswordsController#update as */*
+  Parameters: {"reset_password_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+[31mUnpermitted parameters: :password, :password_confirmation[0m
+[31mUnpermitted parameters: :password, :password_confirmation[0m
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["reset_password_token", "41877bfde5b61cf6c8b99f0db1eb8620806ad79d18f00bae083666908bc91317"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 8ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 1513)
+
+

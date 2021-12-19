@@ -5,6 +5,10 @@ ruby '2.7.1'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'devise_token_auth', '~> 1.1.4'
+
+gem 'rack-cors', '~> 1.1.1'
+
+
 # Basic
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
