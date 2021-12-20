@@ -7,6 +7,9 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'devise_token_auth', '~> 1.1.4'
 
 gem 'rack-cors', '~> 1.1.1'
+gem 'rspec-rails', '~>4.0.1'
+gem 'factory_bot_rails'
+gem 'shoulda-matchers', '~>4.0'
 
 
 # Basic
