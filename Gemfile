@@ -10,7 +10,7 @@ gem 'rack-cors', '~> 1.1.1'
 gem 'rspec-rails', '~>4.0.1'
 gem 'factory_bot_rails'
 gem 'shoulda-matchers', '~>4.0'
-
+gem 'faker'
 
 # Basic
 gem 'bootsnap', '>= 1.4.2', require: false
